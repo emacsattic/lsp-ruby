@@ -23,7 +23,8 @@
 
 ;;; Commentary:
 
-;; Ruby support for lsp-mode using the language_server gem
+;; Ruby support for lsp-mode using either the solargraph or the
+;; language_server gem
 
 ;;; Code:
 
@@ -49,10 +50,18 @@
   (lsp-provide-marked-string-renderer
    client "ruby" 'lsp-ruby--render-string))
 
-(lsp-define-stdio-client
+(lsp-define-tcp-client
  lsp-ruby "ruby"
  lsp-ruby--get-root
- '("language_server-ruby")
+ '("solargraph" "socket")
+ "127.0.0.1"
+ 7658
+ :initialize 'lsp-ruby--initialize-client)
+
+(lsp-define-stdio-client
+ lsp-ruby-mtsmfm "ruby"
+ lsp-ruby--get-root
+ '("language_server-ruby" "--experimental-features")
  :initialize 'lsp-ruby--initialize-client)
 
 (provide 'lsp-ruby)
