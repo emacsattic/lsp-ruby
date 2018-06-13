@@ -1,7 +1,7 @@
 lsp-ruby
 ========
 
-Ruby support for lsp-mode using the [language_server gem](https://github.com/mtsmfm/language_server-ruby).
+Ruby support for lsp-mode using the [solargraph gem](https://github.com/castwide/solargraph).
 
 ## Installation
 
@@ -27,10 +27,13 @@ Install the packages:
 ```emacs-lisp
 (require 'lsp-ruby)
 (add-hook 'ruby-mode-hook #'lsp-ruby-enable)
+
+;; Optional, for short messages on hover:
+;; (setq lsp-hover-text-function 'lsp--text-document-signature-help)
 ```
 
 ### Install the server
 
 ```
-gem install language_server
+gem install solargraph
 ```
