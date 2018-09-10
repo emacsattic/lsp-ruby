@@ -50,8 +50,14 @@
   (lsp-provide-marked-string-renderer
    client "ruby" 'lsp-ruby--render-string))
 
-(lsp-define-tcp-client
+(lsp-define-stdio-client
  lsp-ruby "ruby"
+ lsp-ruby--get-root
+ '("solargraph" "stdio")
+ :initialize 'lsp-ruby--initialize-client)
+
+(lsp-define-tcp-client
+ lsp-ruby-solargraph-tcp "ruby"
  lsp-ruby--get-root
  '("solargraph" "socket")
  "127.0.0.1"
