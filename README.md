@@ -3,6 +3,10 @@ lsp-ruby
 
 Ruby support for lsp-mode using the [solargraph gem](https://github.com/castwide/solargraph).
 
+## News
+
+Note: if you recently started getting an error like `Could not find command "stdio".`, run `gem update solargraph`.
+
 ## Installation
 
 ### From source
